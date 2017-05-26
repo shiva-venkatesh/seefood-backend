@@ -1,15 +1,19 @@
 var express = require('express')
 var app = express()
-var Clarifai = require('clarifai');
+var Clarifai = require('clarifai')
+var secrets = require('./secrets')
+var keys = secrets.clarifaiConfig()
+
 var ClarifaiInstance = new Clarifai.App(
-  'Sqf4iUA8kzqG0GJw51pr2udTTeNVTrKMlWZ_dbEs',
-  'iBvq3wD90PG39-s8fRyD2xR3pv2PGVqypS_I2swq'
-);
+  keys.access_key,
+  keys.secret_key
+)
 
 var store
 
+var foodModel = 'bd367be194cf45149e75f01d59f77ba7'
 function getPredictionAsJSON(imageURL) {
-  ClarifaiInstance.models.predict('bd367be194cf45149e75f01d59f77ba7', imageURL).then(
+  ClarifaiInstance.models.predict(foodModel, imageURL).then(
     function(response) {
       store = response
     },
