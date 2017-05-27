@@ -10,5 +10,9 @@
     "express": "^4.15.2"
   },
   "author": "Shiva Venkatesh",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.17.2",
+    "clarifai": "^2.1.7"
+  }
 }
